@@ -2,6 +2,7 @@
 using System.IO;
 using System.Net.Http;
 using System.Threading;
+using System.Linq;
 
 namespace batch_policy
 {
@@ -15,7 +16,7 @@ namespace batch_policy
             try
             {
                 Console.WriteLine("Job Triggered!");
-                Console.WriteLine("Argument lenght and value = " + args?.Length);
+                Console.WriteLine($"Argument lenght and value ={args.FirstOrDefault()} " );
                 long timeToPoll = 0;
 
                 if (!(args.Length > 0 && long.TryParse(args[0], out timeToPoll)))
@@ -26,7 +27,7 @@ namespace batch_policy
                 var client = new HttpClient();
                 var result = client.GetAsync( url + "?time=" + timeToPoll).Result;
                 Console.WriteLine($"received message from kafka {result}");
-                
+
                 if (result.IsSuccessStatusCode)
                 {
                     var response = result.Content.ReadAsStringAsync().Result;
