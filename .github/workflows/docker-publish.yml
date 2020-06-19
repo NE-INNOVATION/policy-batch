@@ -50,9 +50,9 @@ jobs:
       uses: redhat-developer/openshift-actions@v2.0
       with:
         # The URL of the Openshift cluster
-        openshift_server_url: ${{ secrets.OPENSHIFT_SERVER_URL }}
+        openshift_server_url: ${{ secrets.OPENSHIFT_AZURE_URL }}
         # JSON with values to connect to the Openshift cluster
-        parameters: '{"username": "${{ secrets.OPENSHIFT_USER }}", "acceptUntrustedCerts": "true", "password":"${{ secrets.OPENSHIFT_PASSWORD }}"}'
+        parameters: '{"username": "${{ secrets.OPENSHIFT_AZURE_USER }}", "acceptUntrustedCerts": "true", "password":"${{ secrets.OPENSHIFT_AZURE_PASSWORD }}"}'
         # Oc command to be executed
           #'version'
           #'project development'
