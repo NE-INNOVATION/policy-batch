@@ -11,15 +11,18 @@ namespace batch_policy
         static string url = Environment.GetEnvironmentVariable("POLICY-URL") ?? "http://istio-ingressgateway-istiosystem.apps.openshift.ne-innovation.com/policy/message";
         static string bootstrap = Environment.GetEnvironmentVariable("BOOTSTRAP-SERVER") ?? "my-cluster-kafka-bootstrap:9092";
 
+        static string sleepTime = Environment.GetEnvironmentVariable("POLL_TIME") ?? "60000";
+
         static void Main(string[] args)
         {
             Console.WriteLine("Job Triggered!");
 
-            try
+
+            while (true)
             {
-                while (true)
+                try
                 {
-                   
+
                     Console.WriteLine($"Argument lenght and value ={args.FirstOrDefault()} ");
                     long timeToPoll = 0;
                     Thread.Sleep(1000);
@@ -40,10 +43,11 @@ namespace batch_policy
                             KafkaService.SendMessage(response, bootstrap);
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex);
+
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex);
+                }
             }
 
         }
