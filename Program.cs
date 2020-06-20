@@ -40,7 +40,10 @@ namespace batch_policy
                     {
                         var response = result.Content.ReadAsStringAsync().Result;
                         if (response != null && response != "")
+                        {
+                            Console.WriteLine($"Content is not empty {response}");
                             KafkaService.SendMessage(response, bootstrap);
+                        }
                     }
                 }
 
