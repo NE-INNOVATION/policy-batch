@@ -11,7 +11,7 @@ namespace batch_policy
         static string url = Environment.GetEnvironmentVariable("POLICY-URL") ?? "http://istio-ingressgateway-istiosystem.apps.openshift.ne-innovation.com/policy/message";
         static string bootstrap = Environment.GetEnvironmentVariable("BOOTSTRAP-SERVER") ?? "my-cluster-kafka-bootstrap:9092";
 
-        static string sleepTime = Environment.GetEnvironmentVariable("POLL_TIME") ?? "60000";
+        static string sleepTime = Environment.GetEnvironmentVariable("POLL_TIME") ?? "1000";
 
         static void Main(string[] args)
         {
@@ -24,13 +24,15 @@ namespace batch_policy
                 {
 
                     Console.WriteLine($"Argument lenght and value ={args.FirstOrDefault()} ");
-                    long timeToPoll = 0;
-                    Thread.Sleep(1000);
+                    int timeToPoll = 0;
+                    
 
-                    if (!(args.Length > 0 && long.TryParse(args[0], out timeToPoll)))
+                    if (!(args.Length > 0 && int.TryParse(args[0], out timeToPoll)))
                     {
-                        timeToPoll = 10000;
+                        timeToPoll = 1000;
                     }
+
+                    Thread.Sleep(timeToPoll);
 
                     var client = new HttpClient();
                     var result = client.GetAsync(url + "?time=" + timeToPoll).Result;
