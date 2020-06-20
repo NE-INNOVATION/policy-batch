@@ -36,7 +36,7 @@ namespace batch_policy
                     if (result.IsSuccessStatusCode)
                     {
                         var response = result.Content.ReadAsStringAsync().Result;
-                        if (response != null && response != "[]")
+                        if (response != null && response != "")
                             KafkaService.SendMessage(response, bootstrap);
                     }
                 }
