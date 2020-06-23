@@ -9,7 +9,7 @@ namespace batch_policy
         public static async Task<string> SendMessage(string policy, string bootstrapUrl = "my-cluster-kafka-bootstrap:9092")
         {
             var config = new ProducerConfig {
-                BootstrapServers = bootstrapUrl,
+                BootstrapServers = bootstrapUrl, 
             };
 
             using (var p = new ProducerBuilder<Null, string>(config).Build())
