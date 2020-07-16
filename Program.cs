@@ -8,7 +8,7 @@ namespace batch_policy
 {
     class Program
     {
-        static string url = Environment.GetEnvironmentVariable("POLICY-URL") ?? "http://istio-ingressgateway-istiosystem.apps.openshift.ne-innovation.com/policy/message";
+        static string url = Environment.GetEnvironmentVariable("POLICY-URL") ?? "http://istio-ingressgateway-istio-system.apps.awsopenshift.ne-innovation.com/policy/message";
         static string bootstrap = Environment.GetEnvironmentVariable("BOOTSTRAP-SERVER") ?? "my-cluster-kafka-bootstrap:9092";
 
         static string sleepTime = Environment.GetEnvironmentVariable("POLL_TIME") ?? "1000";
