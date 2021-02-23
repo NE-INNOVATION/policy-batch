@@ -36,7 +36,7 @@ namespace batch_policy
 
                     var client = new HttpClient();
                     var result = client.GetAsync(url + "?time=" + timeToPoll).Result;
-                    Console.WriteLine($"received message from kafka {result}");
+                    //Console.WriteLine($"received message from kafka {result}");
 
                     if (result.IsSuccessStatusCode)
                     {
