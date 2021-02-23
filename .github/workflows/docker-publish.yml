@@ -39,10 +39,10 @@ jobs:
       run:  |
          echo ${{ steps.extract_branch.outputs.branch }}
          echo ${{ steps.extract_branch.outputs.sha_short }}
-         podman login quay.io -u ${{ secrets.docker_username }} -p ${{ secrets.docker_password }}
+         docker login quay.io -u ${{ secrets.docker_username }} -p ${{ secrets.docker_password }}
     - name: Build Image using Podman
       run: |
-         podman build . -t quay.io/neinnovationorg/policy-batch:${{ steps.extract_branch.outputs.branch }} --cgroup-manager=cgroupfs
+         docker build . -t quay.io/neinnovationorg/policy-batch:${{ steps.extract_branch.outputs.branch }} --cgroup-manager=cgroupfs
     - name: Push Image to Github Registry
       run: |
           podman push quay.io/neinnovationorg/policy-batch:${{ steps.extract_branch.outputs.branch }}
