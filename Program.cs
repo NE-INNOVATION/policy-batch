@@ -23,7 +23,7 @@ namespace batch_policy
                 try
                 {
 
-                    Console.WriteLine($"Argument lenght and value ={args.FirstOrDefault()} ");
+                    //Console.WriteLine($"Argument lenght and value ={args.FirstOrDefault()} ");
                     int timeToPoll = 0;
                     
 
