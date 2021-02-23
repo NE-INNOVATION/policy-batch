@@ -45,7 +45,7 @@ jobs:
          docker build . -t quay.io/neinnovationorg/policy-batch:${{ steps.extract_branch.outputs.branch }}
     - name: Push Image to Github Registry
       run: |
-          podman push quay.io/neinnovationorg/policy-batch:${{ steps.extract_branch.outputs.branch }}
+          docker push quay.io/neinnovationorg/policy-batch:${{ steps.extract_branch.outputs.branch }}
     - name: OpenShift Action
       uses: redhat-developer/openshift-actions@v2.0
       with:
