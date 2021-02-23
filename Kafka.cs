@@ -6,7 +6,7 @@ namespace batch_policy
 {
     public class KafkaService
     {
-        public static async Task<string> SendMessage(string policy, string bootstrapUrl = "my-cluster-kafka-bootstrap:9092")
+        public static async Task<string> SendMessage(string policy, string bootstrapUrl = "policy-cluster-kafka-bootstrap:9092")
         {
             Console.WriteLine($"Begin Publish to Kafka");
             var config = new ProducerConfig {
